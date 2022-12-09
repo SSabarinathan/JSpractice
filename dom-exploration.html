@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="dom-exploration.css" />
+  </head>
+  <body oncopy="alert('You wont copy any text from here!!');return false">
+    <h2>You are not suppose to copy the text!</h2>
+    <div>
+      <h1 id="heading">Using Document Object Model</h1>
+    </div>
+    <br /><br /><br />
+
+
+
+    <!-- <script>
+      console.dir(document.body)
+            document.body.children[0].firstChild.data="Aspire(changed name)"
+    </script> -->
+
+    
+    <script>
+      {
+    
+      let name= prompt("Enter your name: ");
+      let place=prompt("Working place ? ");
+      document.write("Hii ",name," How are you ,,");
+      document.write("Wowww!!...Are you working in " , place , "Great!!");
+      
+    
+      }
+      name ();
+      
+    </script>
+
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <h2>Changing font family</h2>
+
+    <p id="demo">using font family property and size.</p>
+
+    <button type="button" onclick="myFunction()">Set font</button>
+
+    <script>
+      function myFunction() {
+        const p = document.getElementById("demo");
+                                                                                           // p.style.fontStyle = "italic";
+                                                                                           // p.style.fontSize = "50px";
+        p.className = "demo";
+        p.id = "demo1";
+      }
+    </script>
+
+    <br /><br /><br /><br />
+
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- append child to the element -->
+    <h2>The appendChild() Method example</h2>
+    <ol id="myList">
+      <li>HTML</li>
+      <li>CSS</li>
+    </ol>
+    <button onclick="myChild()">Append</button>
+
+    <script>
+      function myChild() {
+        const add_item = document.createElement("li");
+        add_item.innerText = "DOM";
+        // const text = document.createTextNode("DOM");
+        // add_item.appendChild(text);
+        document.getElementById("myList").appendChild(add_item);
+
+        const ol = document.getElementById("myList");
+        const firstChild = ol.firstElementChild;
+        // ol.removeChild(firstChild);
+        //firstChild.innerText = "JS";
+      }
+    </script>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <h2>Creating Element and and adding text node</h2>
+    <div class="first_div">The below text is added now.</div>
+    <br />
+    <button onclick="text_node()">Add text node</button>
+
+    <script>
+      function text_node() {
+        const text = document.createElement("div");
+        const content = document.createTextNode(
+          "It is the added content by creating new text node to the element."
+        );
+        text.appendChild(content);
+
+        const result = document.getElementsByClassName("first_div");
+        result[0].appendChild(text);
+        // document.body.append(text);
+        // document.body.insertBefore(result[0],text);
+      }
+    </script>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <h2>Creating element and access by id with text node</h2>
+    <div id="div1">Adding content using th id.</div>
+    <br />
+    <button onclick="content()">contents</button>
+
+    <script>
+      function content() {
+        const text1 = document.createElement("div");
+        const para = document.createTextNode(
+          " Id is working without using the index position."
+        );
+        text1.appendChild(para);
+        const final_result = document.getElementById("div1");
+        final_result.appendChild(text1);
+      }
+    </script>
+
+    <br /><br />
+
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <script src="dom-exploration.js"></script>
+    <button onclick="changeTitle()">Change title</button>
+
+    <br /><br /><br />
+
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- query selector -->
+
+    <h2>Query selector</h2>
+
+    <div> 
+      <ul>
+        <li class="query_selector">HTML review</li>
+        <li class="query_selector">Web Tech Review</li>
+        <li class="query_selector">JS review</li>
+        
+      </ul>
+    </div>
+    <script>
+      let query = document.querySelector("ul>li:last-child");
+      console.log(query.innerText );
+      document.write(">>>",query.innerText);
+    </script>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+<h2>Query selector All</h2>
+
+    <div> 
+      <ul class="x">
+        <li class="query_selector_all">HTML review 1</li>
+        <li class="query_selector_all">Web Tech Review 2</li>
+        <li class="query_selector_all">JS review 3</li>
+        
+      </ul>
+    </div>
+    <script>
+      let query_selector_All = document.querySelectorAll(".query_selector_all");
+      console.log(query_selector_All[2].innerText );
+      document.write(">>>",query_selector_All[2].innerText)
+    </script>
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+<h2>Focus event example</h2>
+
+<form id="focus_event">
+  <label>Some text for example:
+    <input type="text" placeholder="text input" />
+  </label>
+  <label>Password:
+    <input type="password" placeholder="password" />
+  </label>
+</form>
+
+<script>
+  const colour_change=document.getElementById("focus_event");
+  colour_change.addEventListener("focus",(event)=>{
+    event.target.style.background='pink';
+  },true);
+
+  colour_change.addEventListener("blur", (event) => {
+  event.target.style.background = 'blue';
+}, true);
+
+</script>
+
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<h2>Form event</h2>
+<form id="form">
+  <label>Test field: <input type="text" /></label>
+  <br /><br />
+  <button type="submit">Submit form</button>
+</form>
+<p id="log"></p>
+
+
+<script>
+  function logSubmit(event) {
+  log.textContent = "Form Submitted! Successfully";
+  event.preventDefault();
+  //default action belongs to the event not occurs
+}
+
+const form = document.getElementById('form');
+const log = document.getElementById('log');
+form.addEventListener('submit', logSubmit);
+
+  
+</script>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<h2>Mouse event </h2>
+
+
+
+
+
+
+<h2>Key board event</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<script>
+  document.addEventListener("copy",(event)=>{
+    event.preventDefault();
+    alert("you wont copy this!!")
+
+  })
+</script> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 
+
+    <p id="p-tag">Hello world....</p>
+    <div class="container"></div>
+    <input id="name" type="text" />
+    <button>Click to change name</button>
+    
+    <script>
+      const p = document.getElementById("p-tag");
+      p.innerHTML = "Hi Sabari...";
+      const div = document.getElementsByClassName("container");
+
+      const child = document.createElement("p");
+      child.innerHTML = "Good Morning";
+      div[0].appendChild(child);
+
+      const nameIp = document.getElementById("name");
+      nameIp.value = "User1";
+
+      const btn = document.getElementsByTagName("button");
+      btn[0].addEventListener("click", () => {
+        nameIp.value = "Sabri";
+      });
+    </script> -->
+  </body>
+</html>

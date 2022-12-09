@@ -1,0 +1,17 @@
+body{
+    background:linear-gradient(100deg, #ebb7f6, #3dcbde);
+}
+
+.heading{
+    padding-left: 500px;
+    font-style: italic;
+}
+
+.demo {
+    font-size: 50px;
+    font-style: italic;
+    font-weight: bolder;
+  }
+  #demo1 {
+    color: teal;
+  }
